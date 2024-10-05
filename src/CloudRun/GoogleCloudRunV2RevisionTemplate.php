@@ -35,6 +35,10 @@ class GoogleCloudRunV2RevisionTemplate extends \Google\Collection
    */
   public $executionEnvironment;
   /**
+   * @var bool
+   */
+  public $healthCheckDisabled;
+  /**
    * @var string[]
    */
   public $labels;
@@ -42,6 +46,8 @@ class GoogleCloudRunV2RevisionTemplate extends \Google\Collection
    * @var int
    */
   public $maxInstanceRequestConcurrency;
+  protected $nodeSelectorType = GoogleCloudRunV2NodeSelector::class;
+  protected $nodeSelectorDataType = '';
   /**
    * @var string
    */
@@ -52,6 +58,12 @@ class GoogleCloudRunV2RevisionTemplate extends \Google\Collection
    * @var string
    */
   public $serviceAccount;
+  protected $serviceMeshType = GoogleCloudRunV2ServiceMesh::class;
+  protected $serviceMeshDataType = '';
+  /**
+   * @var bool
+   */
+  public $sessionAffinity;
   /**
    * @var string
    */
@@ -118,6 +130,20 @@ class GoogleCloudRunV2RevisionTemplate extends \Google\Collection
     return $this->executionEnvironment;
   }
   /**
+   * @param bool
+   */
+  public function setHealthCheckDisabled($healthCheckDisabled)
+  {
+    $this->healthCheckDisabled = $healthCheckDisabled;
+  }
+  /**
+   * @return bool
+   */
+  public function getHealthCheckDisabled()
+  {
+    return $this->healthCheckDisabled;
+  }
+  /**
    * @param string[]
    */
   public function setLabels($labels)
@@ -144,6 +170,20 @@ class GoogleCloudRunV2RevisionTemplate extends \Google\Collection
   public function getMaxInstanceRequestConcurrency()
   {
     return $this->maxInstanceRequestConcurrency;
+  }
+  /**
+   * @param GoogleCloudRunV2NodeSelector
+   */
+  public function setNodeSelector(GoogleCloudRunV2NodeSelector $nodeSelector)
+  {
+    $this->nodeSelector = $nodeSelector;
+  }
+  /**
+   * @return GoogleCloudRunV2NodeSelector
+   */
+  public function getNodeSelector()
+  {
+    return $this->nodeSelector;
   }
   /**
    * @param string
@@ -186,6 +226,34 @@ class GoogleCloudRunV2RevisionTemplate extends \Google\Collection
   public function getServiceAccount()
   {
     return $this->serviceAccount;
+  }
+  /**
+   * @param GoogleCloudRunV2ServiceMesh
+   */
+  public function setServiceMesh(GoogleCloudRunV2ServiceMesh $serviceMesh)
+  {
+    $this->serviceMesh = $serviceMesh;
+  }
+  /**
+   * @return GoogleCloudRunV2ServiceMesh
+   */
+  public function getServiceMesh()
+  {
+    return $this->serviceMesh;
+  }
+  /**
+   * @param bool
+   */
+  public function setSessionAffinity($sessionAffinity)
+  {
+    $this->sessionAffinity = $sessionAffinity;
+  }
+  /**
+   * @return bool
+   */
+  public function getSessionAffinity()
+  {
+    return $this->sessionAffinity;
   }
   /**
    * @param string

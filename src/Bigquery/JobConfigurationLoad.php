@@ -37,7 +37,21 @@ class JobConfigurationLoad extends \Google\Collection
   /**
    * @var string
    */
+  public $columnNameCharacterMap;
+  protected $connectionPropertiesType = ConnectionProperty::class;
+  protected $connectionPropertiesDataType = 'array';
+  /**
+   * @var bool
+   */
+  public $copyFilesOnly;
+  /**
+   * @var string
+   */
   public $createDisposition;
+  /**
+   * @var bool
+   */
+  public $createSession;
   /**
    * @var string[]
    */
@@ -56,6 +70,10 @@ class JobConfigurationLoad extends \Google\Collection
    * @var string
    */
   public $fieldDelimiter;
+  /**
+   * @var string
+   */
+  public $fileSetSpecType;
   protected $hivePartitioningOptionsType = HivePartitioningOptions::class;
   protected $hivePartitioningOptionsDataType = '';
   /**
@@ -190,6 +208,48 @@ class JobConfigurationLoad extends \Google\Collection
   /**
    * @param string
    */
+  public function setColumnNameCharacterMap($columnNameCharacterMap)
+  {
+    $this->columnNameCharacterMap = $columnNameCharacterMap;
+  }
+  /**
+   * @return string
+   */
+  public function getColumnNameCharacterMap()
+  {
+    return $this->columnNameCharacterMap;
+  }
+  /**
+   * @param ConnectionProperty[]
+   */
+  public function setConnectionProperties($connectionProperties)
+  {
+    $this->connectionProperties = $connectionProperties;
+  }
+  /**
+   * @return ConnectionProperty[]
+   */
+  public function getConnectionProperties()
+  {
+    return $this->connectionProperties;
+  }
+  /**
+   * @param bool
+   */
+  public function setCopyFilesOnly($copyFilesOnly)
+  {
+    $this->copyFilesOnly = $copyFilesOnly;
+  }
+  /**
+   * @return bool
+   */
+  public function getCopyFilesOnly()
+  {
+    return $this->copyFilesOnly;
+  }
+  /**
+   * @param string
+   */
   public function setCreateDisposition($createDisposition)
   {
     $this->createDisposition = $createDisposition;
@@ -200,6 +260,20 @@ class JobConfigurationLoad extends \Google\Collection
   public function getCreateDisposition()
   {
     return $this->createDisposition;
+  }
+  /**
+   * @param bool
+   */
+  public function setCreateSession($createSession)
+  {
+    $this->createSession = $createSession;
+  }
+  /**
+   * @return bool
+   */
+  public function getCreateSession()
+  {
+    return $this->createSession;
   }
   /**
    * @param string[]
@@ -284,6 +358,20 @@ class JobConfigurationLoad extends \Google\Collection
   public function getFieldDelimiter()
   {
     return $this->fieldDelimiter;
+  }
+  /**
+   * @param string
+   */
+  public function setFileSetSpecType($fileSetSpecType)
+  {
+    $this->fileSetSpecType = $fileSetSpecType;
+  }
+  /**
+   * @return string
+   */
+  public function getFileSetSpecType()
+  {
+    return $this->fileSetSpecType;
   }
   /**
    * @param HivePartitioningOptions

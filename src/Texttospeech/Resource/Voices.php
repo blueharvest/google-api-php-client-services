@@ -17,6 +17,8 @@
 
 namespace Google\Service\Texttospeech\Resource;
 
+use Google\Service\Texttospeech\GenerateVoiceCloningKeyRequest;
+use Google\Service\Texttospeech\GenerateVoiceCloningKeyResponse;
 use Google\Service\Texttospeech\ListVoicesResponse;
 
 /**
@@ -30,18 +32,36 @@ use Google\Service\Texttospeech\ListVoicesResponse;
 class Voices extends \Google\Service\Resource
 {
   /**
+   * Generates voice clone key given a short voice prompt. This method validates
+   * the voice prompts with a series of checks against the voice talent statement
+   * to verify the voice clone is safe to generate.
+   * (voices.generateVoiceCloningKey)
+   *
+   * @param GenerateVoiceCloningKeyRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return GenerateVoiceCloningKeyResponse
+   * @throws \Google\Service\Exception
+   */
+  public function generateVoiceCloningKey(GenerateVoiceCloningKeyRequest $postBody, $optParams = [])
+  {
+    $params = ['postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('generateVoiceCloningKey', [$params], GenerateVoiceCloningKeyResponse::class);
+  }
+  /**
    * Returns a list of Voice supported for synthesis. (voices.listVoices)
    *
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string languageCode Optional. Recommended. [BCP-47](https://www
-   * .rfc-editor.org/rfc/bcp/bcp47.txt) language tag. If not specified, the API
-   * will return all supported voices. If specified, the ListVoices call will only
-   * return voices that can be used to synthesize this language_code. For example,
-   * if you specify `"en-NZ"`, all `"en-NZ"` voices will be returned. If you
-   * specify `"no"`, both `"no-"` (Norwegian) and `"nb-"` (Norwegian Bokmal)
-   * voices will be returned.
+   * @opt_param string languageCode Optional. Recommended.
+   * [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. If not
+   * specified, the API will return all supported voices. If specified, the
+   * ListVoices call will only return voices that can be used to synthesize this
+   * language_code. For example, if you specify `"en-NZ"`, all `"en-NZ"` voices
+   * will be returned. If you specify `"no"`, both `"no-"` (Norwegian) and `"nb-"`
+   * (Norwegian Bokmal) voices will be returned.
    * @return ListVoicesResponse
+   * @throws \Google\Service\Exception
    */
   public function listVoices($optParams = [])
   {

@@ -26,6 +26,8 @@ class TableFieldSchema extends \Google\Collection
    * @var string
    */
   public $collation;
+  protected $dataPoliciesType = DataPolicyOption::class;
+  protected $dataPoliciesDataType = 'array';
   /**
    * @var string
    */
@@ -36,6 +38,10 @@ class TableFieldSchema extends \Google\Collection
   public $description;
   protected $fieldsType = TableFieldSchema::class;
   protected $fieldsDataType = 'array';
+  /**
+   * @var string
+   */
+  public $foreignTypeDefinition;
   /**
    * @var string
    */
@@ -54,6 +60,12 @@ class TableFieldSchema extends \Google\Collection
    * @var string
    */
   public $precision;
+  protected $rangeElementTypeType = TableFieldSchemaRangeElementType::class;
+  protected $rangeElementTypeDataType = '';
+  /**
+   * @var string
+   */
+  public $roundingMode;
   /**
    * @var string
    */
@@ -90,6 +102,20 @@ class TableFieldSchema extends \Google\Collection
   public function getCollation()
   {
     return $this->collation;
+  }
+  /**
+   * @param DataPolicyOption[]
+   */
+  public function setDataPolicies($dataPolicies)
+  {
+    $this->dataPolicies = $dataPolicies;
+  }
+  /**
+   * @return DataPolicyOption[]
+   */
+  public function getDataPolicies()
+  {
+    return $this->dataPolicies;
   }
   /**
    * @param string
@@ -132,6 +158,20 @@ class TableFieldSchema extends \Google\Collection
   public function getFields()
   {
     return $this->fields;
+  }
+  /**
+   * @param string
+   */
+  public function setForeignTypeDefinition($foreignTypeDefinition)
+  {
+    $this->foreignTypeDefinition = $foreignTypeDefinition;
+  }
+  /**
+   * @return string
+   */
+  public function getForeignTypeDefinition()
+  {
+    return $this->foreignTypeDefinition;
   }
   /**
    * @param string
@@ -202,6 +242,34 @@ class TableFieldSchema extends \Google\Collection
   public function getPrecision()
   {
     return $this->precision;
+  }
+  /**
+   * @param TableFieldSchemaRangeElementType
+   */
+  public function setRangeElementType(TableFieldSchemaRangeElementType $rangeElementType)
+  {
+    $this->rangeElementType = $rangeElementType;
+  }
+  /**
+   * @return TableFieldSchemaRangeElementType
+   */
+  public function getRangeElementType()
+  {
+    return $this->rangeElementType;
+  }
+  /**
+   * @param string
+   */
+  public function setRoundingMode($roundingMode)
+  {
+    $this->roundingMode = $roundingMode;
+  }
+  /**
+   * @return string
+   */
+  public function getRoundingMode()
+  {
+    return $this->roundingMode;
   }
   /**
    * @param string

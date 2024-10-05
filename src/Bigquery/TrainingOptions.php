@@ -19,11 +19,19 @@ namespace Google\Service\Bigquery;
 
 class TrainingOptions extends \Google\Collection
 {
-  protected $collection_key = 'timeSeriesIdColumns';
+  protected $collection_key = 'vertexAiModelVersionAliases';
+  /**
+   * @var string
+   */
+  public $activationFn;
   /**
    * @var bool
    */
   public $adjustStepChanges;
+  /**
+   * @var bool
+   */
+  public $approxGlobalFeatureContrib;
   /**
    * @var bool
    */
@@ -35,22 +43,43 @@ class TrainingOptions extends \Google\Collection
   /**
    * @var string
    */
+  public $autoArimaMinOrder;
+  /**
+   * @var bool
+   */
+  public $autoClassWeights;
+  /**
+   * @var string
+   */
   public $batchSize;
   /**
    * @var string
    */
   public $boosterType;
+  public $budgetHours;
   /**
    * @var bool
    */
   public $calculatePValues;
   /**
+   * @var string
+   */
+  public $categoryEncodingMethod;
+  /**
    * @var bool
    */
   public $cleanSpikesAndDips;
+  /**
+   * @var string
+   */
+  public $colorSpace;
   public $colsampleBylevel;
   public $colsampleBynode;
   public $colsampleBytree;
+  /**
+   * @var string
+   */
+  public $contributionMetric;
   /**
    * @var string
    */
@@ -73,6 +102,10 @@ class TrainingOptions extends \Google\Collection
    */
   public $decomposeTimeSeries;
   /**
+   * @var string[]
+   */
+  public $dimensionIdColumns;
+  /**
    * @var string
    */
   public $distanceType;
@@ -90,6 +123,10 @@ class TrainingOptions extends \Google\Collection
    */
   public $feedbackType;
   /**
+   * @var bool
+   */
+  public $fitIntercept;
+  /**
    * @var string[]
    */
   public $hiddenUnits;
@@ -97,6 +134,10 @@ class TrainingOptions extends \Google\Collection
    * @var string
    */
   public $holidayRegion;
+  /**
+   * @var string[]
+   */
+  public $holidayRegions;
   /**
    * @var string
    */
@@ -117,7 +158,15 @@ class TrainingOptions extends \Google\Collection
   /**
    * @var string
    */
+  public $instanceWeightColumn;
+  /**
+   * @var string
+   */
   public $integratedGradientsNumSteps;
+  /**
+   * @var string
+   */
+  public $isTestColumn;
   /**
    * @var string
    */
@@ -130,6 +179,7 @@ class TrainingOptions extends \Google\Collection
    * @var string
    */
   public $kmeansInitializationMethod;
+  public $l1RegActivation;
   public $l1Regularization;
   public $l2Regularization;
   public $labelClassWeights;
@@ -158,6 +208,7 @@ class TrainingOptions extends \Google\Collection
    * @var string
    */
   public $maxTreeDepth;
+  public $minAprioriSupport;
   public $minRelativeProgress;
   public $minSplitLoss;
   /**
@@ -168,6 +219,10 @@ class TrainingOptions extends \Google\Collection
    * @var string
    */
   public $minTreeChildWeight;
+  /**
+   * @var string
+   */
+  public $modelRegistry;
   /**
    * @var string
    */
@@ -189,20 +244,41 @@ class TrainingOptions extends \Google\Collection
   /**
    * @var string
    */
+  public $numPrincipalComponents;
+  /**
+   * @var string
+   */
   public $numTrials;
   /**
    * @var string
    */
   public $optimizationStrategy;
   /**
-   * @var bool
+   * @var string
    */
-  public $preserveInputStructs;
+  public $optimizer;
+  public $pcaExplainedVarianceRatio;
+  /**
+   * @var string
+   */
+  public $pcaSolver;
   /**
    * @var string
    */
   public $sampledShapleyNumPaths;
+  /**
+   * @var bool
+   */
+  public $scaleFeatures;
+  /**
+   * @var bool
+   */
+  public $standardizeFeatures;
   public $subsample;
+  /**
+   * @var string
+   */
+  public $tfVersion;
   /**
    * @var string
    */
@@ -232,12 +308,34 @@ class TrainingOptions extends \Google\Collection
    * @var string
    */
   public $userColumn;
+  /**
+   * @var string[]
+   */
+  public $vertexAiModelVersionAliases;
   public $walsAlpha;
   /**
    * @var bool
    */
   public $warmStart;
+  /**
+   * @var string
+   */
+  public $xgboostVersion;
 
+  /**
+   * @param string
+   */
+  public function setActivationFn($activationFn)
+  {
+    $this->activationFn = $activationFn;
+  }
+  /**
+   * @return string
+   */
+  public function getActivationFn()
+  {
+    return $this->activationFn;
+  }
   /**
    * @param bool
    */
@@ -251,6 +349,20 @@ class TrainingOptions extends \Google\Collection
   public function getAdjustStepChanges()
   {
     return $this->adjustStepChanges;
+  }
+  /**
+   * @param bool
+   */
+  public function setApproxGlobalFeatureContrib($approxGlobalFeatureContrib)
+  {
+    $this->approxGlobalFeatureContrib = $approxGlobalFeatureContrib;
+  }
+  /**
+   * @return bool
+   */
+  public function getApproxGlobalFeatureContrib()
+  {
+    return $this->approxGlobalFeatureContrib;
   }
   /**
    * @param bool
@@ -283,6 +395,34 @@ class TrainingOptions extends \Google\Collection
   /**
    * @param string
    */
+  public function setAutoArimaMinOrder($autoArimaMinOrder)
+  {
+    $this->autoArimaMinOrder = $autoArimaMinOrder;
+  }
+  /**
+   * @return string
+   */
+  public function getAutoArimaMinOrder()
+  {
+    return $this->autoArimaMinOrder;
+  }
+  /**
+   * @param bool
+   */
+  public function setAutoClassWeights($autoClassWeights)
+  {
+    $this->autoClassWeights = $autoClassWeights;
+  }
+  /**
+   * @return bool
+   */
+  public function getAutoClassWeights()
+  {
+    return $this->autoClassWeights;
+  }
+  /**
+   * @param string
+   */
   public function setBatchSize($batchSize)
   {
     $this->batchSize = $batchSize;
@@ -308,6 +448,14 @@ class TrainingOptions extends \Google\Collection
   {
     return $this->boosterType;
   }
+  public function setBudgetHours($budgetHours)
+  {
+    $this->budgetHours = $budgetHours;
+  }
+  public function getBudgetHours()
+  {
+    return $this->budgetHours;
+  }
   /**
    * @param bool
    */
@@ -323,6 +471,20 @@ class TrainingOptions extends \Google\Collection
     return $this->calculatePValues;
   }
   /**
+   * @param string
+   */
+  public function setCategoryEncodingMethod($categoryEncodingMethod)
+  {
+    $this->categoryEncodingMethod = $categoryEncodingMethod;
+  }
+  /**
+   * @return string
+   */
+  public function getCategoryEncodingMethod()
+  {
+    return $this->categoryEncodingMethod;
+  }
+  /**
    * @param bool
    */
   public function setCleanSpikesAndDips($cleanSpikesAndDips)
@@ -335,6 +497,20 @@ class TrainingOptions extends \Google\Collection
   public function getCleanSpikesAndDips()
   {
     return $this->cleanSpikesAndDips;
+  }
+  /**
+   * @param string
+   */
+  public function setColorSpace($colorSpace)
+  {
+    $this->colorSpace = $colorSpace;
+  }
+  /**
+   * @return string
+   */
+  public function getColorSpace()
+  {
+    return $this->colorSpace;
   }
   public function setColsampleBylevel($colsampleBylevel)
   {
@@ -359,6 +535,20 @@ class TrainingOptions extends \Google\Collection
   public function getColsampleBytree()
   {
     return $this->colsampleBytree;
+  }
+  /**
+   * @param string
+   */
+  public function setContributionMetric($contributionMetric)
+  {
+    $this->contributionMetric = $contributionMetric;
+  }
+  /**
+   * @return string
+   */
+  public function getContributionMetric()
+  {
+    return $this->contributionMetric;
   }
   /**
    * @param string
@@ -439,6 +629,20 @@ class TrainingOptions extends \Google\Collection
     return $this->decomposeTimeSeries;
   }
   /**
+   * @param string[]
+   */
+  public function setDimensionIdColumns($dimensionIdColumns)
+  {
+    $this->dimensionIdColumns = $dimensionIdColumns;
+  }
+  /**
+   * @return string[]
+   */
+  public function getDimensionIdColumns()
+  {
+    return $this->dimensionIdColumns;
+  }
+  /**
    * @param string
    */
   public function setDistanceType($distanceType)
@@ -503,6 +707,20 @@ class TrainingOptions extends \Google\Collection
     return $this->feedbackType;
   }
   /**
+   * @param bool
+   */
+  public function setFitIntercept($fitIntercept)
+  {
+    $this->fitIntercept = $fitIntercept;
+  }
+  /**
+   * @return bool
+   */
+  public function getFitIntercept()
+  {
+    return $this->fitIntercept;
+  }
+  /**
    * @param string[]
    */
   public function setHiddenUnits($hiddenUnits)
@@ -529,6 +747,20 @@ class TrainingOptions extends \Google\Collection
   public function getHolidayRegion()
   {
     return $this->holidayRegion;
+  }
+  /**
+   * @param string[]
+   */
+  public function setHolidayRegions($holidayRegions)
+  {
+    $this->holidayRegions = $holidayRegions;
+  }
+  /**
+   * @return string[]
+   */
+  public function getHolidayRegions()
+  {
+    return $this->holidayRegions;
   }
   /**
    * @param string
@@ -597,6 +829,20 @@ class TrainingOptions extends \Google\Collection
   /**
    * @param string
    */
+  public function setInstanceWeightColumn($instanceWeightColumn)
+  {
+    $this->instanceWeightColumn = $instanceWeightColumn;
+  }
+  /**
+   * @return string
+   */
+  public function getInstanceWeightColumn()
+  {
+    return $this->instanceWeightColumn;
+  }
+  /**
+   * @param string
+   */
   public function setIntegratedGradientsNumSteps($integratedGradientsNumSteps)
   {
     $this->integratedGradientsNumSteps = $integratedGradientsNumSteps;
@@ -607,6 +853,20 @@ class TrainingOptions extends \Google\Collection
   public function getIntegratedGradientsNumSteps()
   {
     return $this->integratedGradientsNumSteps;
+  }
+  /**
+   * @param string
+   */
+  public function setIsTestColumn($isTestColumn)
+  {
+    $this->isTestColumn = $isTestColumn;
+  }
+  /**
+   * @return string
+   */
+  public function getIsTestColumn()
+  {
+    return $this->isTestColumn;
   }
   /**
    * @param string
@@ -649,6 +909,14 @@ class TrainingOptions extends \Google\Collection
   public function getKmeansInitializationMethod()
   {
     return $this->kmeansInitializationMethod;
+  }
+  public function setL1RegActivation($l1RegActivation)
+  {
+    $this->l1RegActivation = $l1RegActivation;
+  }
+  public function getL1RegActivation()
+  {
+    return $this->l1RegActivation;
   }
   public function setL1Regularization($l1Regularization)
   {
@@ -766,6 +1034,14 @@ class TrainingOptions extends \Google\Collection
   {
     return $this->maxTreeDepth;
   }
+  public function setMinAprioriSupport($minAprioriSupport)
+  {
+    $this->minAprioriSupport = $minAprioriSupport;
+  }
+  public function getMinAprioriSupport()
+  {
+    return $this->minAprioriSupport;
+  }
   public function setMinRelativeProgress($minRelativeProgress)
   {
     $this->minRelativeProgress = $minRelativeProgress;
@@ -809,6 +1085,20 @@ class TrainingOptions extends \Google\Collection
   public function getMinTreeChildWeight()
   {
     return $this->minTreeChildWeight;
+  }
+  /**
+   * @param string
+   */
+  public function setModelRegistry($modelRegistry)
+  {
+    $this->modelRegistry = $modelRegistry;
+  }
+  /**
+   * @return string
+   */
+  public function getModelRegistry()
+  {
+    return $this->modelRegistry;
   }
   /**
    * @param string
@@ -883,6 +1173,20 @@ class TrainingOptions extends \Google\Collection
   /**
    * @param string
    */
+  public function setNumPrincipalComponents($numPrincipalComponents)
+  {
+    $this->numPrincipalComponents = $numPrincipalComponents;
+  }
+  /**
+   * @return string
+   */
+  public function getNumPrincipalComponents()
+  {
+    return $this->numPrincipalComponents;
+  }
+  /**
+   * @param string
+   */
   public function setNumTrials($numTrials)
   {
     $this->numTrials = $numTrials;
@@ -909,18 +1213,40 @@ class TrainingOptions extends \Google\Collection
     return $this->optimizationStrategy;
   }
   /**
-   * @param bool
+   * @param string
    */
-  public function setPreserveInputStructs($preserveInputStructs)
+  public function setOptimizer($optimizer)
   {
-    $this->preserveInputStructs = $preserveInputStructs;
+    $this->optimizer = $optimizer;
   }
   /**
-   * @return bool
+   * @return string
    */
-  public function getPreserveInputStructs()
+  public function getOptimizer()
   {
-    return $this->preserveInputStructs;
+    return $this->optimizer;
+  }
+  public function setPcaExplainedVarianceRatio($pcaExplainedVarianceRatio)
+  {
+    $this->pcaExplainedVarianceRatio = $pcaExplainedVarianceRatio;
+  }
+  public function getPcaExplainedVarianceRatio()
+  {
+    return $this->pcaExplainedVarianceRatio;
+  }
+  /**
+   * @param string
+   */
+  public function setPcaSolver($pcaSolver)
+  {
+    $this->pcaSolver = $pcaSolver;
+  }
+  /**
+   * @return string
+   */
+  public function getPcaSolver()
+  {
+    return $this->pcaSolver;
   }
   /**
    * @param string
@@ -936,6 +1262,34 @@ class TrainingOptions extends \Google\Collection
   {
     return $this->sampledShapleyNumPaths;
   }
+  /**
+   * @param bool
+   */
+  public function setScaleFeatures($scaleFeatures)
+  {
+    $this->scaleFeatures = $scaleFeatures;
+  }
+  /**
+   * @return bool
+   */
+  public function getScaleFeatures()
+  {
+    return $this->scaleFeatures;
+  }
+  /**
+   * @param bool
+   */
+  public function setStandardizeFeatures($standardizeFeatures)
+  {
+    $this->standardizeFeatures = $standardizeFeatures;
+  }
+  /**
+   * @return bool
+   */
+  public function getStandardizeFeatures()
+  {
+    return $this->standardizeFeatures;
+  }
   public function setSubsample($subsample)
   {
     $this->subsample = $subsample;
@@ -943,6 +1297,20 @@ class TrainingOptions extends \Google\Collection
   public function getSubsample()
   {
     return $this->subsample;
+  }
+  /**
+   * @param string
+   */
+  public function setTfVersion($tfVersion)
+  {
+    $this->tfVersion = $tfVersion;
+  }
+  /**
+   * @return string
+   */
+  public function getTfVersion()
+  {
+    return $this->tfVersion;
   }
   /**
    * @param string
@@ -1050,6 +1418,20 @@ class TrainingOptions extends \Google\Collection
   {
     return $this->userColumn;
   }
+  /**
+   * @param string[]
+   */
+  public function setVertexAiModelVersionAliases($vertexAiModelVersionAliases)
+  {
+    $this->vertexAiModelVersionAliases = $vertexAiModelVersionAliases;
+  }
+  /**
+   * @return string[]
+   */
+  public function getVertexAiModelVersionAliases()
+  {
+    return $this->vertexAiModelVersionAliases;
+  }
   public function setWalsAlpha($walsAlpha)
   {
     $this->walsAlpha = $walsAlpha;
@@ -1071,6 +1453,20 @@ class TrainingOptions extends \Google\Collection
   public function getWarmStart()
   {
     return $this->warmStart;
+  }
+  /**
+   * @param string
+   */
+  public function setXgboostVersion($xgboostVersion)
+  {
+    $this->xgboostVersion = $xgboostVersion;
+  }
+  /**
+   * @return string
+   */
+  public function getXgboostVersion()
+  {
+    return $this->xgboostVersion;
   }
 }
 

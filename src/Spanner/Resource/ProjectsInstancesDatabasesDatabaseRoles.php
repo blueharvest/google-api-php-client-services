@@ -26,7 +26,7 @@ use Google\Service\Spanner\TestIamPermissionsResponse;
  * Typical usage is:
  *  <code>
  *   $spannerService = new Google\Service\Spanner(...);
- *   $databaseRoles = $spannerService->databaseRoles;
+ *   $databaseRoles = $spannerService->projects_instances_databases_databaseRoles;
  *  </code>
  */
 class ProjectsInstancesDatabasesDatabaseRoles extends \Google\Service\Resource
@@ -36,7 +36,7 @@ class ProjectsInstancesDatabasesDatabaseRoles extends \Google\Service\Resource
    * (databaseRoles.listProjectsInstancesDatabasesDatabaseRoles)
    *
    * @param string $parent Required. The database whose roles should be listed.
-   * Values are of the form `projects//instances//databases//databaseRoles`.
+   * Values are of the form `projects//instances//databases/`.
    * @param array $optParams Optional parameters.
    *
    * @opt_param int pageSize Number of database roles to be returned in the
@@ -44,6 +44,7 @@ class ProjectsInstancesDatabasesDatabaseRoles extends \Google\Service\Resource
    * @opt_param string pageToken If non-empty, `page_token` should contain a
    * next_page_token from a previous ListDatabaseRolesResponse.
    * @return ListDatabaseRolesResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsInstancesDatabasesDatabaseRoles($parent, $optParams = [])
   {
@@ -67,6 +68,7 @@ class ProjectsInstancesDatabasesDatabaseRoles extends \Google\Service\Resource
    * @param TestIamPermissionsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return TestIamPermissionsResponse
+   * @throws \Google\Service\Exception
    */
   public function testIamPermissions($resource, TestIamPermissionsRequest $postBody, $optParams = [])
   {

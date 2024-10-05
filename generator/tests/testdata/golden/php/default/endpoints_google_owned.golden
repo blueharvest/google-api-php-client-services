@@ -40,6 +40,7 @@ class EccoDomaniIeri extends \Google\Service
       "https://www.googleapis.com/auth/userinfo.email";
 
   public $greetings;
+  public $rootUrlTemplate;
 
   /**
    * Constructs the internal representation of the EccoDomaniIeri service.
@@ -52,6 +53,7 @@ class EccoDomaniIeri extends \Google\Service
   {
     parent::__construct($clientOrConfig);
     $this->rootUrl = $rootUrl ?: 'https://peer-pontus.appspot.com/_ah/api/';
+    $this->rootUrlTemplate = $rootUrl ?: 'https://peer-pontus.appspot.com/_ah/api/';
     $this->servicePath = 'helloworld/v1/';
     $this->batchPath = 'batch';
     $this->version = 'v1';
@@ -230,6 +232,7 @@ class Greetings extends \Google\Service\Resource
    *
    * @param array $optParams Optional parameters.
    * @return HelloGreeting
+   * @throws \Google\Service\Exception
    */
   public function authed($optParams = [])
   {
@@ -243,6 +246,7 @@ class Greetings extends \Google\Service\Resource
    * @param int $id
    * @param array $optParams Optional parameters.
    * @return HelloGreeting
+   * @throws \Google\Service\Exception
    */
   public function getGreeting($id, $optParams = [])
   {
@@ -255,6 +259,7 @@ class Greetings extends \Google\Service\Resource
    *
    * @param array $optParams Optional parameters.
    * @return HelloGreetingCollection
+   * @throws \Google\Service\Exception
    */
   public function listGreeting($optParams = [])
   {
@@ -269,6 +274,7 @@ class Greetings extends \Google\Service\Resource
    * @param HelloGreeting $postBody
    * @param array $optParams Optional parameters.
    * @return HelloGreeting
+   * @throws \Google\Service\Exception
    */
   public function multiply($times, HelloGreeting $postBody, $optParams = [])
   {

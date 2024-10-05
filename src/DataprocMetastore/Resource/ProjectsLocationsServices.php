@@ -17,15 +17,20 @@
 
 namespace Google\Service\DataprocMetastore\Resource;
 
+use Google\Service\DataprocMetastore\AlterMetadataResourceLocationRequest;
+use Google\Service\DataprocMetastore\AlterTablePropertiesRequest;
+use Google\Service\DataprocMetastore\CancelMigrationRequest;
+use Google\Service\DataprocMetastore\CompleteMigrationRequest;
 use Google\Service\DataprocMetastore\ExportMetadataRequest;
 use Google\Service\DataprocMetastore\ListServicesResponse;
+use Google\Service\DataprocMetastore\MoveTableToDatabaseRequest;
 use Google\Service\DataprocMetastore\Operation;
 use Google\Service\DataprocMetastore\Policy;
-use Google\Service\DataprocMetastore\RemoveIamPolicyRequest;
-use Google\Service\DataprocMetastore\RemoveIamPolicyResponse;
+use Google\Service\DataprocMetastore\QueryMetadataRequest;
 use Google\Service\DataprocMetastore\RestoreServiceRequest;
 use Google\Service\DataprocMetastore\Service;
 use Google\Service\DataprocMetastore\SetIamPolicyRequest;
+use Google\Service\DataprocMetastore\StartMigrationRequest;
 use Google\Service\DataprocMetastore\TestIamPermissionsRequest;
 use Google\Service\DataprocMetastore\TestIamPermissionsResponse;
 
@@ -34,11 +39,85 @@ use Google\Service\DataprocMetastore\TestIamPermissionsResponse;
  * Typical usage is:
  *  <code>
  *   $metastoreService = new Google\Service\DataprocMetastore(...);
- *   $services = $metastoreService->services;
+ *   $services = $metastoreService->projects_locations_services;
  *  </code>
  */
 class ProjectsLocationsServices extends \Google\Service\Resource
 {
+  /**
+   * Alter metadata resource location. The metadata resource can be a database,
+   * table, or partition. This functionality only updates the parent directory for
+   * the respective metadata resource and does not transfer any existing data to
+   * the new location. (services.alterLocation)
+   *
+   * @param string $service Required. The relative resource name of the metastore
+   * service to mutate metadata, in the following
+   * format:projects/{project_id}/locations/{location_id}/services/{service_id}.
+   * @param AlterMetadataResourceLocationRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return Operation
+   * @throws \Google\Service\Exception
+   */
+  public function alterLocation($service, AlterMetadataResourceLocationRequest $postBody, $optParams = [])
+  {
+    $params = ['service' => $service, 'postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('alterLocation', [$params], Operation::class);
+  }
+  /**
+   * Alter metadata table properties. (services.alterTableProperties)
+   *
+   * @param string $service Required. The relative resource name of the Dataproc
+   * Metastore service that's being used to mutate metadata table properties, in
+   * the following
+   * format:projects/{project_id}/locations/{location_id}/services/{service_id}.
+   * @param AlterTablePropertiesRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return Operation
+   * @throws \Google\Service\Exception
+   */
+  public function alterTableProperties($service, AlterTablePropertiesRequest $postBody, $optParams = [])
+  {
+    $params = ['service' => $service, 'postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('alterTableProperties', [$params], Operation::class);
+  }
+  /**
+   * Cancels the ongoing Managed Migration process. (services.cancelMigration)
+   *
+   * @param string $service Required. The relative resource name of the metastore
+   * service to cancel the ongoing migration to, in the following
+   * format:projects/{project_id}/locations/{location_id}/services/{service_id}.
+   * @param CancelMigrationRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return Operation
+   * @throws \Google\Service\Exception
+   */
+  public function cancelMigration($service, CancelMigrationRequest $postBody, $optParams = [])
+  {
+    $params = ['service' => $service, 'postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('cancelMigration', [$params], Operation::class);
+  }
+  /**
+   * Completes the managed migration process. The Dataproc Metastore service will
+   * switch to using its own backend database after successful migration.
+   * (services.completeMigration)
+   *
+   * @param string $service Required. The relative resource name of the metastore
+   * service to complete the migration to, in the following
+   * format:projects/{project_id}/locations/{location_id}/services/{service_id}.
+   * @param CompleteMigrationRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return Operation
+   * @throws \Google\Service\Exception
+   */
+  public function completeMigration($service, CompleteMigrationRequest $postBody, $optParams = [])
+  {
+    $params = ['service' => $service, 'postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('completeMigration', [$params], Operation::class);
+  }
   /**
    * Creates a metastore service in a project and location. (services.create)
    *
@@ -63,6 +142,7 @@ class ProjectsLocationsServices extends \Google\Service\Resource
    * with a letter or number, and consist of alpha-numeric ASCII characters or
    * hyphens.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function create($parent, Service $postBody, $optParams = [])
   {
@@ -88,6 +168,7 @@ class ProjectsLocationsServices extends \Google\Service\Resource
    * (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero
    * UUID (00000000-0000-0000-0000-000000000000) is not supported.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
@@ -104,6 +185,7 @@ class ProjectsLocationsServices extends \Google\Service\Resource
    * @param ExportMetadataRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function exportMetadata($service, ExportMetadataRequest $postBody, $optParams = [])
   {
@@ -119,6 +201,7 @@ class ProjectsLocationsServices extends \Google\Service\Resource
    * form:projects/{project_number}/locations/{location_id}/services/{service_id}.
    * @param array $optParams Optional parameters.
    * @return Service
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -148,6 +231,7 @@ class ProjectsLocationsServices extends \Google\Service\Resource
    * IAM policies, see the IAM documentation
    * (https://cloud.google.com/iam/help/conditions/resource-policies).
    * @return Policy
+   * @throws \Google\Service\Exception
    */
   public function getIamPolicy($resource, $optParams = [])
   {
@@ -179,6 +263,7 @@ class ProjectsLocationsServices extends \Google\Service\Resource
    * paginating, other parameters provided to DataprocMetastore.ListServices must
    * match the call that provided the page token.
    * @return ListServicesResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsLocationsServices($parent, $optParams = [])
   {
@@ -187,11 +272,28 @@ class ProjectsLocationsServices extends \Google\Service\Resource
     return $this->call('list', [$params], ListServicesResponse::class);
   }
   /**
+   * Move a table to another database. (services.moveTableToDatabase)
+   *
+   * @param string $service Required. The relative resource name of the metastore
+   * service to mutate metadata, in the following
+   * format:projects/{project_id}/locations/{location_id}/services/{service_id}.
+   * @param MoveTableToDatabaseRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return Operation
+   * @throws \Google\Service\Exception
+   */
+  public function moveTableToDatabase($service, MoveTableToDatabaseRequest $postBody, $optParams = [])
+  {
+    $params = ['service' => $service, 'postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('moveTableToDatabase', [$params], Operation::class);
+  }
+  /**
    * Updates the parameters of a single service. (services.patch)
    *
    * @param string $name Immutable. The relative resource name of the metastore
-   * service, of the
-   * form:projects/{project_number}/locations/{location_id}/services/{service_id}.
+   * service, in the following format:projects/{project_number}/locations/{locatio
+   * n_id}/services/{service_id}.
    * @param Service $postBody
    * @param array $optParams Optional parameters.
    *
@@ -209,6 +311,7 @@ class ProjectsLocationsServices extends \Google\Service\Resource
    * Fields specified in the update_mask are relative to the resource (not to the
    * full request). A field is overwritten if it is in the mask.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function patch($name, Service $postBody, $optParams = [])
   {
@@ -217,22 +320,21 @@ class ProjectsLocationsServices extends \Google\Service\Resource
     return $this->call('patch', [$params], Operation::class);
   }
   /**
-   * Removes the attached IAM policies for a resource (services.removeIamPolicy)
+   * Query Dataproc Metastore metadata. (services.queryMetadata)
    *
-   * @param string $resource Required. The relative resource name of the dataplane
-   * resource to remove IAM policy, in the following form:projects/{project_id}/lo
-   * cations/{location_id}/services/{service_id}/databases/{database_id} or projec
-   * ts/{project_id}/locations/{location_id}/services/{service_id}/databases/{data
-   * base_id}/tables/{table_id}.
-   * @param RemoveIamPolicyRequest $postBody
+   * @param string $service Required. The relative resource name of the metastore
+   * service to query metadata, in the following
+   * format:projects/{project_id}/locations/{location_id}/services/{service_id}.
+   * @param QueryMetadataRequest $postBody
    * @param array $optParams Optional parameters.
-   * @return RemoveIamPolicyResponse
+   * @return Operation
+   * @throws \Google\Service\Exception
    */
-  public function removeIamPolicy($resource, RemoveIamPolicyRequest $postBody, $optParams = [])
+  public function queryMetadata($service, QueryMetadataRequest $postBody, $optParams = [])
   {
-    $params = ['resource' => $resource, 'postBody' => $postBody];
+    $params = ['service' => $service, 'postBody' => $postBody];
     $params = array_merge($params, $optParams);
-    return $this->call('removeIamPolicy', [$params], RemoveIamPolicyResponse::class);
+    return $this->call('queryMetadata', [$params], Operation::class);
   }
   /**
    * Restores a service from a backup. (services.restore)
@@ -243,6 +345,7 @@ class ProjectsLocationsServices extends \Google\Service\Resource
    * @param RestoreServiceRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function restore($service, RestoreServiceRequest $postBody, $optParams = [])
   {
@@ -262,12 +365,30 @@ class ProjectsLocationsServices extends \Google\Service\Resource
    * @param SetIamPolicyRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Policy
+   * @throws \Google\Service\Exception
    */
   public function setIamPolicy($resource, SetIamPolicyRequest $postBody, $optParams = [])
   {
     $params = ['resource' => $resource, 'postBody' => $postBody];
     $params = array_merge($params, $optParams);
     return $this->call('setIamPolicy', [$params], Policy::class);
+  }
+  /**
+   * Starts the Managed Migration process. (services.startMigration)
+   *
+   * @param string $service Required. The relative resource name of the metastore
+   * service to start migrating to, in the following
+   * format:projects/{project_id}/locations/{location_id}/services/{service_id}.
+   * @param StartMigrationRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return Operation
+   * @throws \Google\Service\Exception
+   */
+  public function startMigration($service, StartMigrationRequest $postBody, $optParams = [])
+  {
+    $params = ['service' => $service, 'postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('startMigration', [$params], Operation::class);
   }
   /**
    * Returns permissions that a caller has on the specified resource. If the
@@ -283,6 +404,7 @@ class ProjectsLocationsServices extends \Google\Service\Resource
    * @param TestIamPermissionsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return TestIamPermissionsResponse
+   * @throws \Google\Service\Exception
    */
   public function testIamPermissions($resource, TestIamPermissionsRequest $postBody, $optParams = [])
   {

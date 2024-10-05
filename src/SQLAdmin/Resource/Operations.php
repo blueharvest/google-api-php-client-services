@@ -19,6 +19,7 @@ namespace Google\Service\SQLAdmin\Resource;
 
 use Google\Service\SQLAdmin\Operation;
 use Google\Service\SQLAdmin\OperationsListResponse;
+use Google\Service\SQLAdmin\SqladminEmpty;
 
 /**
  * The "operations" collection of methods.
@@ -31,6 +32,22 @@ use Google\Service\SQLAdmin\OperationsListResponse;
 class Operations extends \Google\Service\Resource
 {
   /**
+   * Cancels an instance operation that has been performed on an instance.
+   * (operations.cancel)
+   *
+   * @param string $project Project ID of the project that contains the instance.
+   * @param string $operation Instance operation ID.
+   * @param array $optParams Optional parameters.
+   * @return SqladminEmpty
+   * @throws \Google\Service\Exception
+   */
+  public function cancel($project, $operation, $optParams = [])
+  {
+    $params = ['project' => $project, 'operation' => $operation];
+    $params = array_merge($params, $optParams);
+    return $this->call('cancel', [$params], SqladminEmpty::class);
+  }
+  /**
    * Retrieves an instance operation that has been performed on an instance.
    * (operations.get)
    *
@@ -38,6 +55,7 @@ class Operations extends \Google\Service\Resource
    * @param string $operation Instance operation ID.
    * @param array $optParams Optional parameters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function get($project, $operation, $optParams = [])
   {
@@ -53,12 +71,16 @@ class Operations extends \Google\Service\Resource
    * @param string $project Project ID of the project that contains the instance.
    * @param array $optParams Optional parameters.
    *
+   * @opt_param string filter Optional. A filter string that follows the rules of
+   * EBNF grammar (https://google.aip.dev/assets/misc/ebnf-filtering.txt). Cloud
+   * SQL provides filters for status, operationType, and startTime.
    * @opt_param string instance Cloud SQL instance ID. This does not include the
    * project ID.
    * @opt_param string maxResults Maximum number of operations per response.
    * @opt_param string pageToken A previously-returned page token representing
    * part of the larger set of results to view.
    * @return OperationsListResponse
+   * @throws \Google\Service\Exception
    */
   public function listOperations($project, $optParams = [])
   {
